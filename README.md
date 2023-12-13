@@ -1,10 +1,12 @@
 # MeetQute
-> The world's *leading* quantum computing-powered dating platform. A "bad idea".
+> Want to get entangled?
+
+The world's *leading* quantum computing-powered dating platform. A "bad idea".
 
 **Note:** This document is a work in progress (WIP). The current mechanics of MeetQute may change in future iterations.
 
 ## Motivations
-As we stand at the cusp of a technological renaissance, quantum computing beckons as a game-changer, especially in areas where traditional algorithms have hit their limits. One area that appears to have hit its limit is online (classical) dating. Say goodbye to the days of swiping and liking based on superficial algorithms; quantum computing heralds a new era in matchmaking.
+As we stand at the cusp of a technological renaissance, quantum computing beckons as a game-changer, especially in areas where traditional algorithms have hit their limits. One such area that appears to have hit its limit is online (classical) dating. Say goodbye to the days of swiping and liking based on superficial algorithms; quantum computing heralds a new era in matchmaking.
 
 [Recent breakthroughs](https://newsroom.ibm.com/2023-12-04-IBM-Debuts-Next-Generation-Quantum-Processor-IBM-Quantum-System-Two,-Extends-Roadmap-to-Advance-Era-of-Quantum-Utility) in quantum computing, both pioneering and historical, have stirred a whirlwind of emotions in the tech community, from awe to apprehension. These advancements leave people wondering: are we on the verge of a quantum era that will eclipse our current classical computing world, or is this just a transient wave of excitement?
 
@@ -40,9 +42,33 @@ Quantum computing is not just a step up from classical computing; it's a whole n
 
 > "The course of true love never did run smooth."
 
-Dating, a complex puzzle of human emotions and connections, often reduces to a mere game of numbers in traditional apps. We will transcend this limitation to transform matchmaking into an advanced science of human compatibility.
+At MeetQute, we're transforming the dating scene by applying quantum computing principles to matchmaking. Our approach transcends traditional algorithms, offering a deeper, more nuanced understanding of compatibility.
 
-**to do...**
+### Quantum Feature Mapping
+- **What It Does:** Transforms your interests and preferences into quantum states. It's like converting your personality and desires into a language that quantum computers understand.
+- **Benefit:** This allows for a more nuanced and comprehensive analysis of compatibility, going beyond the surface level to find truly compatible matches.
+
+### Variational Quantum Eigensolver (VQE) for Compatibility
+- **What It Does:** Uses a method originally intended for physics to calculate the most compatible matches. Think of it as finding a person's 'quantum twin'.
+- **Benefit:** Results in matches that are deeply aligned with your preferences, not just based on superficial criteria.
+
+### Quantum Annealing for Optimization
+- **What It Does:** Sorts through potential matches to find the best ones, similar to solving a complex puzzle.
+- **Benefit:** Increases the likelihood of finding a highly compatible partner by efficiently navigating through the vast possibilities.
+
+### Grover's Algorithm for Efficient Search
+- **What It Does:** Quickly searches through our large user database to find matches based on specific criteria.
+- **Benefit:** Saves time and increases efficiency, especially as our user base grows.
+
+### Engaging User Experience
+MeetQute also incorporates playful quantum-themed elements to make your experience both fun and engaging:
+
+- **Entanglement-themed Questions:** Learn about your matches' interests in science and physics.
+- **Superposition-inspired Choices:** Share a fuller picture of your personality through quantum-inspired options.
+- **Decision-making Styles:** Explore how you and your matches approach decisions, from precise calculations to probabilistic estimates.
+
+### Privacy and Security
+With advanced quantum cryptography, we ensure that your conversations and data are secure, maintaining privacy and confidentiality in your communications.
 
 ## Timeline
 
@@ -52,9 +78,17 @@ Working backwards, that means that volunteer data should be fully collected over
 
 This project will be my first time developing in Qiskit. Pray that it isn't my last.
 
+## Acknowledgments
+
+We owe more than a quantum of gratitude to Prof. Aram Harrow, whose teachings in quantum computing not only enlightened us but also sparked the inception of MeetQute. Even though we didn't always ace his tests, it turns out we learned a thing or two! We hope this project can excite others about quantum computing like you inspired us.
+
 ## Contributions
 Started by Liam Kronman (a.k.a. [qupid@mit.edu](mailto:qupid@mit.edu)) and aided by his good friend GPT4.
 
 [Contribution guidelines for this project](docs/CONTRIBUTING.md)
 
 [Help and feedback](mailto:qupid@mit.edu)
+
+## License
+
+MeetQute is made available under the [MIT License](https://opensource.org/licenses/MIT).
