@@ -1,0 +1,49 @@
+DEV SESSION 1
+
+Entry 1 - 5.55 PM EST
+-----------
+I'll begin by developing a simple quantum matchmaker. Simple in the sense that it will take compare only two user profiles made from the answer to a single question, yielding a match if there is one. The question that I'll be starting with is "Are you single?".
+
+
+
+Entry 2 - 6.22 PM EST
+-----------
+Completed an implementation (accessible under `algorithm/iter0`). I will try to explain the algorithm thoroughly as an exercise in better understanding Qiskit:
+
+In `encoder.py`, I have written a helper function that reads a bit, returning a one-qubit circuit that has an X gate if the input bit is 1 ('Yes'), otherwise it is the identity gate. This is the first step in the algorithm, which is to encode the user's answer to the question "Are you single?" into a quantum state. We then generate the two single-qubit circuits for each user based on encoding 
+
+In `algo.ipynb`, I have written a function `compare_responses` that takes two bits (one for each person's response to the "Single?" question). I generate a circuit with 2 qubits (for inputs) and 1 classical bit (for output measurement).
+
+We generate gates for each response bit using the encoding function, and compose them respectively with the input qubits (my understanding: the first response bit informs the single-qubit circuit that will be added to the "wire" of the first qubit, and same for the second response bit to the second qubit "wire"). To rephrase, the responses are encoded into quantum gates that are applied to two qubits initialized to |0>. This choice may not seem very obvious, especially if you thought to, as I did initially, initialize each qubit's state based on the user's response. However, encoding the state into gates is just a lot simpler and more scalable, as it maintains quantum coherence and minimizes potential errors that can come from re-intialization.
+
+We then apply a CNOT gate from the first qubit to the second, meaning if |0> passed the first qubit gate becomes |1>, then we apply an additional NOT to the second qubit. Finally, we measure the second qubit and return the result.
+
+Let's walk through the casework:
+
+1. Both users are single. The circuit looks like this:
+|0> -- X -----
+|0> -- X - X - M
+
+The measurement should yield |0>, meaning the users are a match!
+
+2. First user is single, second isn't. The circuit:
+|0> -- X -----
+|0> ----- X - M
+
+The measurement should yield |1>, meaning the users are not a match.
+
+3. First user isn't single, second is. The circuit:
+|0> ----------
+|0> -- X --- M
+
+The measurement should yield |1>, meaning the users are not a match.
+
+4. Both users aren't single. The circuit:
+|0> ----------
+|0> -------- M
+
+The measurement should yield |0>, meaning the users are an unlikely match! (just for fun lol)
+
+We want users to be matched when their response vectors are close, in this instance when they are *not* orthogonal. This algorithm achieves that for just two single-answer users, as the casework illustrates.
+
+The circuit simulation concurs with these expectations, running the Aer simulator for 1024 shots yields 100% accuracy.
