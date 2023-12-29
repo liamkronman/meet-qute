@@ -1,0 +1,36 @@
+DEV SESSION 2
+
+Entry 1 - 12:00 AM EST
+-----------
+I'll now try to expand the toy example from the last session into a more realistic matchmaker. We'll expand to ask 3 questions, increasing the number of people as well to test scalability.
+
+The questions will be:
+1. Do you go to MIT?
+2. Do you go to Harvard?
+3. Do you understand quantum mechanics?
+
+
+
+Entry 2 - 12:32 AM EST
+-----------
+The adjusted algorithm can be found in `algorithm/iter1`. It follows a similar architecture to the single-question version: an encoder that converts a person's binary answers into a quantum circuit (now with 3 qubits) and a binary comparison of two users's circuits wire-by-wire (CNOT-style). We then finally measure the last three qubits to get a three-bit binary number, where 1 means that users shared a common answer for that question and 0 means they did not.
+
+In this new example, however, we add some classical post-processing. Consider 5 users with unique responses to the questions. We would like to collect all the pairwise matches (defined by sharing at least 2 common answers). We can do this by iterating through each pair of users, running the corresponding binary comparison circuit and then checking if the output string contains at least 2 1's. This solution doesn't seem to scale well, though. If we have 100 users, we would need to run 4950 comparisons. If we have 1000 users, we would need to run 499500 comparisons. This is a quadratic scaling, which is not ideal.
+
+How can we leverage more quantum behavior to achieve higher performance, especially at scale? I think it's time to start thinking about superposition.
+
+
+
+Entry 3 - 12:45 AM EST
+-----------
+Let's explore some possible alternatives to the last algorithm that utilize more quantum properties.
+
+1. Utilize superposition for batch processing, taking advantage of quantum parallelism. We could encode all the users into a single circuit, and then run the pairwise comparison circuit on all of them at once. For instance, if we have 5 users and 3 questions, we'll use 15 qubits and create a superposition state which we can manipulate through quantum gates. However, interpreting results could get complex, especially as we scale up to more users and questions.
+
+2. Entanglement for group comparisons. By creating entangled states (using gates like CNOT) across users' qubits, we can capture correlations between different users' responses to facilitate group comparisons. However, interpretation might be difficult as well.
+
+3. Amplitude amplification. We can try to frame matchmaking as a search problem within a superposition of all possible matches and use Grover's algorithm to amplify the amplitudes of states that correspond to good matches. Good for runtime, but might be difficult to implement.
+
+4. Quantum annealing. Frame matchmaking as an optimization problem, with the goal of maximizing compatibility scores across all pairs. Define an energy function that represents compatibility scores and use quantum annealing to find the state (configuration of user matches) that minimizes the energy.
+
+I'll explore these options one-by-one starting with superposition for batch processing.
