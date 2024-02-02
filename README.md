@@ -76,7 +76,7 @@ With advanced quantum cryptography, we ensure that your conversations and data a
 
 Working backwards, that means that volunteer data should be fully collected over IAP.
 
-This project will be my first time developing in Qiskit. Pray that it isn't my last.
+This project will be my first time developing in Qiskit.
 
 ## Acknowledgments
 
